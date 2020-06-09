@@ -4,7 +4,7 @@ import pymysql
 import json
 
 url = "http://rank.cn-healthcare.com/rank/catalogs"
-year = "2012"
+year = "2009"
 
 
 def get_html(urls):
