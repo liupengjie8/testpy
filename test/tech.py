@@ -6,7 +6,6 @@ import requests
 
 url = "http://top100.imicams.ac.cn/subject"
 
-
 def get_html(urls):
     request = urllib.request
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
@@ -49,8 +48,6 @@ def save_rank_list(rank_list, year, dept_name):
     conn.commit()
     mycursor.close()
     conn.close()
-
-
 
 parse_html(get_html(url))
 
