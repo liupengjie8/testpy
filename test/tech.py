@@ -22,7 +22,7 @@ def parse_html(file):
     dept_list = dept_zone.findAll('li')
     for dept in dept_list:
         dept_name = dept.find('a').getText()
-        dept_code = dept.find('a')['id']
+        dept_code = dept.find('a')['id'][9:]
         for year in range(2013, 2019):
             ajaxHandler(dept_code, year, dept_name)
 
@@ -40,15 +40,12 @@ def ajaxHandler(subject, year, dept_name):
 def save_rank_list(rank_list, year, dept_name):
     conn = pymysql.connect(host='127.0.0.1', user='root', password='root', db='test')
     mycursor = conn.cursor()
-    print(dept_name)
     for column in rank_list:
-        if year == 2017 or year == 2018:
-            print(year)
-            sql = 'insert into tech_value1(YEAR, SUBJECT, sort, hospital, tech_output, academic_influence, tech_condition, VALUE) values(%s,%s,%s,%s,%s,%s,%s,%s)'
+        if year == '2017' or year == '2018':
+            sql = 'insert into test.tech_value (YEAR, SUBJECT, sort, hospital, tech_output, academic_influence, tech_condition, VALUE) values(%s,%s,%s,%s,%s,%s,%s,%s)'
             mycursor.execute(sql, (year, dept_name, column["RANK"], column["HOSPNAME"], column["INPUT"], column["OUTPUT"], column["INFLUENCE"], column["SUM"]))
         else:
-            print(year)
-            sql = 'insert into tech_value1(YEAR, SUBJECT, sort, hospital, tech_output, academic_influence, tech_condition, VALUE) values(%s,%s,%s,%s,%s,%s,%s,%s)'
+            sql = 'insert into test.tech_value (YEAR, SUBJECT, sort, hospital, tech_output, academic_influence, tech_condition, VALUE) values(%s,%s,%s,%s,%s,%s,%s,%s)'
             mycursor.execute(sql, (year, dept_name, column["RANK"], column["HOSPNAME"], column["OUTPUT"], column["INFLUENCE"], column["INPUT"],column["SUM"]))
     conn.commit()
     mycursor.close()
