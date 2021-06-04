@@ -5,11 +5,11 @@ from selenium.webdriver.support.select import Select
 # 工时系统url
 url='http://39.98.72.170:8212/Accounts/SignIn'
 # 产品id
-product_id='666210300018'
+product_id=''
 # 用户名
-user_name='liupengjie'
+user_name=''
 # 密码
-password='123456'
+password=''
 # 浏览器驱动
 driver = webdriver.Chrome()
 
