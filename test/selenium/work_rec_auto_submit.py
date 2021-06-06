@@ -80,8 +80,6 @@ def get_finished_days():
 
 
 # 新增工作
-
-
 def add_work_rec(work_days):
     i = 0
     d = []
@@ -120,6 +118,7 @@ def add_work_rec(work_days):
     msg.append('程序执行完成，关闭浏览器！欢迎再次使用！')
 
 
+msg.append('本周需填写工时日期：' + str(get_work_day()))
 do_login()
 time.sleep(3)
 to_work_rec()
