@@ -129,4 +129,3 @@ add_work_rec(get_work_day())
 # 关闭浏览器
 driver.close()
 xiaoding.send_text(msg=str(msg))
-print(msg)
