@@ -84,38 +84,50 @@ def add_work_rec(work_days):
     i = 0
     d = []
     for index, day in enumerate(work_days):
-        if day not in hava_data_day:
-            d.append(day)
-            msg.append('检测到日期：' + day + '未填报')
-            input = driver.find_elements_by_tag_name("input")[7]
-            input.click()
-            time.sleep(2)
-            if i < 3:
-                # 获取alert对话框
-                dig_alert = driver.switch_to.alert
-                dig_alert.accept()
-            time.sleep(2)
-            driver.switch_to.frame("ifCreateDialog")
-            time.sleep(2)
-            input_text = driver.find_element_by_id("WORK_DATE")
-            input_text.clear()
-            input_text.send_keys(day)
-            select = driver.find_element_by_id('W_CHARACTER')
-            Select(select).select_by_visible_text('研发')
-            driver.find_element_by_class_name("m-input").click()
-            product_lis = driver.find_elements_by_tag_name('li')
-            for li in product_lis:
-                if li.get_attribute("data-value") == product_id:
-                    li.click()
-            driver.find_element_by_id('ID_OK').click()
-            driver.switch_to.parent_frame()
-            i += 1
-            msg.append('日期：' + day + '填报成功')
+        if day > str(datetime.datetime.now()).split()[0]:
+            msg.append('填报日期'+day+'大于当前日期'+str(datetime.datetime.now()).split()[0]+'，无法填报！')
+        else:
+            if day not in hava_data_day:
+                d.append(day)
+                msg.append('检测到日期：' + day + '未填报')
+                input = driver.find_elements_by_tag_name("input")[7]
+                input.click()
+                time.sleep(2)
+                if i < 3:
+                    # 获取alert对话框
+                    dig_alert = driver.switch_to.alert
+                    dig_alert.accept()
+                time.sleep(2)
+                driver.switch_to.frame("ifCreateDialog")
+                time.sleep(2)
+                input_text = driver.find_element_by_id("WORK_DATE")
+                input_text.clear()
+                input_text.send_keys(day)
+                select = driver.find_element_by_id('W_CHARACTER')
+                Select(select).select_by_visible_text('研发')
+                driver.find_element_by_class_name("m-input").click()
+                product_lis = driver.find_elements_by_tag_name('li')
+                for li in product_lis:
+                    if li.get_attribute("data-value") == product_id:
+                        li.click()
+                driver.find_element_by_id('ID_OK').click()
+                driver.switch_to.parent_frame()
+                i += 1
+                msg.append('日期：' + day + '填报成功')
     if i == 0:
-        msg.append('本周所有日期都填报完成，无需再次填报！')
+        msg.append('本周可填报日期都填报完成！')
     else:
         msg.append("填报完成，填报成功"+str(i)+"天，分别为：" + str(d))
     msg.append('程序执行完成，关闭浏览器！欢迎再次使用！')
+
+
+# 发送操作日志
+def send_log(msg):
+    mkd_str = ''
+    for m in msg:
+        mkd_str += '\n* ' + m
+    xiaoding.send_markdown('操作结果',
+                           "# 操作详情：" + mkd_str)
 
 
 msg.append('本周需填写工时日期：' + str(get_work_day()))
@@ -127,4 +139,4 @@ get_finished_days()
 add_work_rec(get_work_day())
 # 关闭浏览器
 driver.close()
-xiaoding.send_text(msg=str(msg))
+send_log(msg)
