@@ -129,8 +129,8 @@ def send_log(msg):
     mkd_str = ''
     for m in msg:
         mkd_str += '\n* ' + m
-    xiaoding.send_markdown('工时填报结果',
-                           "# 工时填报详情：" + mkd_str)
+    xiaoding.send_markdown('研发工时填报结果',
+                           "# 用户工时填报详情：\n## 用户名："+user_name + mkd_str)
 
 
 msg.append('本周需填写工时日期：' + str(get_work_day()))
