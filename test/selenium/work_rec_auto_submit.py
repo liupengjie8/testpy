@@ -72,7 +72,10 @@ def get_finished_days():
     for td in tds:
         if td.text in get_work_day():
             hava_data_day.append(td.text)
-    msg.append('填报前：本周已填写工时日期：' + str(set(hava_data_day)))
+    if len(set(hava_data_day))==0:
+        msg.append('填报前：本周未填写工时！')
+    else:
+        msg.append('填报前：本周已填写工时日期：' + str(set(hava_data_day)))
     myset = set(hava_data_day)
     for item in myset:
         if hava_data_day.count(item)>1:
@@ -92,7 +95,7 @@ def add_work_rec(work_days):
                 msg.append('检测到日期：' + day + '未填报')
                 input = driver.find_elements_by_tag_name("input")[7]
                 input.click()
-                time.sleep(2)
+                time.sleep(5)
                 if i < 3:
                     # 获取alert对话框
                     dig_alert = driver.switch_to.alert
@@ -126,8 +129,8 @@ def send_log(msg):
     mkd_str = ''
     for m in msg:
         mkd_str += '\n* ' + m
-    xiaoding.send_markdown('操作结果',
-                           "# 操作详情：" + mkd_str)
+    xiaoding.send_markdown('工时填报结果',
+                           "# 工时填报详情：" + mkd_str)
 
 
 msg.append('本周需填写工时日期：' + str(get_work_day()))
