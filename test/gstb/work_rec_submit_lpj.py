@@ -20,6 +20,8 @@ product_id = '666210300018'
 user_name = 'liupengjie'
 # 密码
 password = '123456'
+# 手机号
+mobile = ['18710199403']
 # 浏览器驱动
 driver = webdriver.Chrome()
 # 已经填报的工作日
@@ -58,7 +60,9 @@ def do_login():
 
 # 打开工作记录
 def to_work_rec():
+    global user_real_name
     div = driver.find_element_by_class_name("divTopMenu")
+    user_real_name = driver.find_element_by_id("RealName").text
     a = div.find_elements_by_tag_name("a")[3]
     a.click()
     driver.switch_to.frame("jerichotabiframe_1")
@@ -74,7 +78,7 @@ def get_finished_days():
     if len(set(hava_data_day))==0:
         msg.append('填报前：本周未填写工时！')
     else:
-        msg.append('填报前：本周已填写工时日期：' + str(set(hava_data_day)))
+        msg.append('填报前：本周已填写工时日期：' + str(sorted(set(hava_data_day))))
     myset = set(hava_data_day)
     for item in myset:
         if hava_data_day.count(item)>1:
@@ -129,7 +133,7 @@ def send_log(msg):
     for m in msg:
         mkd_str += '\n* ' + m
     xiaoding.send_markdown('研发工时填报结果',
-                           "# 用户工时填报详情：\n## 用户名："+user_name + mkd_str)
+                           "# 用户工时填报详情：\n## 用户名："+ user_real_name + mkd_str, at_mobiles=mobile)
 
 
 msg.append('本周需填写工时日期：' + str(get_work_day()))

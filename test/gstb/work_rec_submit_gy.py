@@ -20,6 +20,8 @@ product_id = '666210300020'
 user_name = 'gaoya'
 # 密码
 password = '123456'
+# 手机号
+mobile = ['18334784387']
 # 浏览器驱动
 driver = webdriver.Chrome()
 # 已经填报的工作日
@@ -129,7 +131,7 @@ def send_log(msg):
     for m in msg:
         mkd_str += '\n* ' + m
     xiaoding.send_markdown('研发工时填报结果',
-                           "# 用户工时填报详情：\n## 用户名："+user_name + mkd_str)
+                           "# 用户工时填报详情：\n## 用户名："+user_name + mkd_str, at_mobiles=mobile)
 
 
 msg.append('本周需填写工时日期：' + str(get_work_day()))
