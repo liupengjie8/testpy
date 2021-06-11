@@ -17,7 +17,7 @@ url = 'http://39.98.72.170:8212/Accounts/SignIn'
 # 产品id
 product_id = '666210300018'
 # 用户名
-user_name = 'liupengjie'
+user_name = 'limei'
 # 密码
 password = '123456'
 # 浏览器驱动
