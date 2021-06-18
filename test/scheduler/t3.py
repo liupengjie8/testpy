@@ -8,13 +8,10 @@ import time
 def job():
     print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     os.system("python work_rec_submit_lpj.py")
-    time.sleep(30)
     os.system("python work_rec_submit_gy.py")
-    time.sleep(30)
     os.system("python work_rec_submit_lm.py")
-    time.sleep(30)
     os.system("python work_rec_submit_ly.py")
 
 scheduler = BlockingScheduler()
-scheduler.add_job(job, 'cron', day_of_week='4', hour=9, minute=11)
+scheduler.add_job(job, 'cron', day_of_week='4', hour=9, minute=20)
 scheduler.start()

@@ -15,13 +15,13 @@ xiaoding = DingtalkChatbot(webhook, secret=secret)  # 方式二：勾选“加�
 # 工时系统url
 url = 'http://39.98.72.170:8212/Accounts/SignIn'
 # 产品id
-product_id = '666210300020'
+product_id = '666210300018'
 # 用户名
-user_name = 'gaoya'
+user_name = 'liuyun'
 # 密码
 password = '123456'
 # 手机号
-mobile = ['18334784387']
+mobile = ['13520835387']
 # 浏览器驱动
 driver = webdriver.Chrome()
 # 已经填报的工作日
