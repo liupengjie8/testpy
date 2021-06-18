@@ -1,8 +1,6 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 from datetime import datetime
 import os
-import time
-
 
 # 输出时间
 def job():
