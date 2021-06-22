@@ -21,8 +21,8 @@ def get_ope_codes():
 
 
 def get_mr_ope_result():
-    sql = 'SELECT date,mr_content FROM mrqc_result WHERE LEFT(DATE,7) IN (%s,%s)  AND org_id = %s'
-    ddd = mycursor.execute(sql, ('2020-01', '2020-08', org_id))
+    sql = 'SELECT date,mr_content FROM mrqc_result_first WHERE LEFT(DATE,7) IN (%s)  AND org_id = %s'
+    ddd = mycursor.execute(sql, ('2021-01', org_id))
     datas = mycursor.fetchall()
     for rows in datas:
         date = rows[0]

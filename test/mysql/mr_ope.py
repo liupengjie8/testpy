@@ -1,7 +1,7 @@
 import pymysql
 import json
 
-org_id = '130000200008'
+org_id = '130000200016'
 codes_list = []
 conn = pymysql.connect(host='192.168.1.35', user='root', password='greAtsoft918!', db='area_report_platform_test_cn')
 mycursor = conn.cursor()
@@ -11,7 +11,7 @@ conn.commit()
 
 
 def get_ope_codes():
-    sql = "SELECT CODE FROM basic_data WHERE TYPE=%s AND sec_type IN (%s,%s)"
+    sql = "SELECT CODE FROM basic_data WHERE TYPE=%s AND sec_type IN (%s,%s) AND  hospital_type=2"
     mycursor.execute(sql, ('OPERATION_CODE', '手术', '介入治疗'))
     datas = mycursor.fetchall()
     for rows in datas:
@@ -21,8 +21,8 @@ def get_ope_codes():
 
 
 def get_mr_ope_result():
-    sql = 'SELECT date,mr_content FROM mrqc_result WHERE LEFT(DATE,7) IN (%s,%s)  AND org_id = %s'
-    ddd = mycursor.execute(sql, ('2020-01', '2020-08', org_id))
+    sql = 'SELECT date,mr_content FROM mrqc_result_first WHERE LEFT(DATE,7) IN (%s)  AND org_id = %s'
+    ddd = mycursor.execute(sql, ('2021-02', org_id))
     datas = mycursor.fetchall()
     for rows in datas:
         date = rows[0]
