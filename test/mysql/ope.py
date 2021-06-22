@@ -8,6 +8,7 @@ sql = "delete from mr_ope_rec"
 mycursor.execute(sql)
 conn.commit()
 
+
 def get_ope_codes():
     sql = "SELECT CODE FROM basic_data WHERE TYPE=%s AND sec_type IN (%s,%s)"
     mycursor.execute(sql, ('OPERATION_CODE', '手术', '介入治疗'))
@@ -20,7 +21,7 @@ def get_ope_codes():
 
 def get_mr_ope_result():
     sql = 'SELECT date,mr_content FROM mrqc_result WHERE LEFT(DATE,7) IN (%s,%s)  AND org_id = %s'
-    ddd = mycursor.execute(sql,('2020-01','2020-08','130000200008'))
+    ddd = mycursor.execute(sql, ('2020-01', '2020-08', '130000200008'))
     datas = mycursor.fetchall()
     for rows in datas:
         date = rows[0]
@@ -40,7 +41,7 @@ def get_mr_ope_result():
             dict_ope = {'病案号': a48, '符合条件手术量': count_ope, '符合条件手术代码': opes}
             if count_ope > 0:
                 sql1 = 'INSERT INTO area_report_platform_test_cn.mr_ope_rec ( a48,date, ope_count, opes) VALUES(%s,%s,%s,%s)'
-                mycursor.execute(sql1, (str(a48),date, str(count_ope), str(opes)))
+                mycursor.execute(sql1, (str(a48), date, str(count_ope), str(opes)))
     conn.commit()
     mycursor.close()
     conn.close()
