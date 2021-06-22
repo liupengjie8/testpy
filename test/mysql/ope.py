@@ -1,6 +1,7 @@
 import pymysql
 import json
 
+org_id = '130000200008'
 codes_list = []
 conn = pymysql.connect(host='192.168.1.35', user='root', password='greAtsoft918!', db='area_report_platform_test_cn')
 mycursor = conn.cursor()
@@ -21,30 +22,28 @@ def get_ope_codes():
 
 def get_mr_ope_result():
     sql = 'SELECT date,mr_content FROM mrqc_result WHERE LEFT(DATE,7) IN (%s,%s)  AND org_id = %s'
-    ddd = mycursor.execute(sql, ('2020-01', '2020-08', '130000200008'))
+    ddd = mycursor.execute(sql, ('2020-01', '2020-08', org_id))
     datas = mycursor.fetchall()
     for rows in datas:
         date = rows[0]
-        json_data = rows[1]
-        json_obj = json.loads(str(json_data))
+        json_obj = json.loads(str(rows[1]))
         operations = json_obj['operations']
-        i = 1
         if len(operations) > 0:
             a48 = json_obj['a48']
             count_ope = 0
             opes = []
             for ope in operations:
-                if ('c35c' in ope):
+                if 'c35c' in ope:
                     if str(ope['c35c']) in codes_list:
                         count_ope = count_ope + 1
                         opes.append(str(ope['c35c']))
-            dict_ope = {'病案号': a48, '符合条件手术量': count_ope, '符合条件手术代码': opes}
             if count_ope > 0:
-                sql1 = 'INSERT INTO area_report_platform_test_cn.mr_ope_rec ( a48,date, ope_count, opes) VALUES(%s,%s,%s,%s)'
-                mycursor.execute(sql1, (str(a48), date, str(count_ope), str(opes)))
+                sql_insert = 'INSERT INTO area_report_platform_test_cn.mr_ope_rec (org_id, a48, date, ope_count, opes) VALUES(%s, %s, %s, %s, %s)'
+                mycursor.execute(sql_insert, (org_id, str(a48), date, str(count_ope), str(opes)))
     conn.commit()
     mycursor.close()
     conn.close()
+    print("end~")
 
 
 get_ope_codes()
