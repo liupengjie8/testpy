@@ -114,6 +114,7 @@ def add_work_rec(work_days):
                 driver.find_element_by_class_name("m-input").click()
                 product_lis = driver.find_elements_by_tag_name('li')
                 for li in product_lis:
+
                     if li.get_attribute("data-value") == product_id:
                         li.click()
                 driver.find_element_by_id('ID_OK').click()
