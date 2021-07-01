@@ -1,590 +1,425 @@
 SELECT
-	mr.id,
-	mr.C09C,
-	mr.C14x01C,
-	mr.C03C,
-	o1.C35x01C,
-	o1.C35x02C,
-	o1.C35x03C,
-	o1.C35x04C,
-	o1.C35x05C,
-	o1.C35x06C,
-	o1.C35x07C,
-	o1.C35x08C,
-	o1.C35x09C,
-	o1.C35x10C,
-	o1.C35x11C,
-	o1.C35x12C,
-	o1.C35x13C,
-	o1.C35x14C,
-	o1.C35x15C,
-	o1.C35x16C,
-	o1.C35x17C,
-	o1.C35x18C,
-	o1.C35x19C,
-	o1.C35x20C,
-	o2.C35x21C,
-	o2.C35x22C,
-	o2.C35x23C,
-	o2.C35x24C,
-	o2.C35x25C,
-	o2.C35x26C,
-	o2.C35x27C,
-	o2.C35x28C,
-	o2.C35x29C,
-	o2.C35x30C,
-	o2.C35x31C,
-	o2.C35x32C,
-	o2.C35x33C,
-	o2.C35x34C,
-	o2.C35x35C,
-	o2.C35x36C,
-	o2.C35x37C,
-	o2.C35x38C,
-	o2.C35x39C,
-	o2.C35x40C,
-	d.C06x01C,
-	d.C06x02C,
-	d.C06x03C,
-	d.C06x04C,
-	d.C06x05C,
-	d.C06x06C,
-	d.C06x07C,
-	d.C06x08C,
-	d.C06x09C,
-	d.C06x10C,
-	d.C06x11C,
-	d.C06x12C,
-	d.C06x13C,
-	d.C06x14C,
-	d.C06x15C,
-	d.C06x16C,
-	d.C06x17C,
-	d.C06x18C,
-	d.C06x19C,
-	d.C06x20C,
-	d.C06x21C,
-	d.C06x22C,
-	d.C06x23C,
-	d.C06x24C,
-	d.C06x25C,
-	d.C06x26C,
-	d.C06x27C,
-	d.C06x28C,
-	d.C06x29C,
-	d.C06x30C,
-	d.C06x31C,
-	d.C06x32C,
-	d.C06x33C,
-	d.C06x34C,
-	d.C06x35C,
-	d.C06x36C,
-	d.C06x37C,
-	d.C06x38C,
-	d.C06x39C,
-	d.C06x40C
-FROM
-	mr
-LEFT OUTER JOIN mr_other_operations1 o1 ON mr.id = o1.mr_id
-LEFT OUTER JOIN mr_other_operations2 o2 ON mr.id = o2.mr_id
-LEFT OUTER JOIN mr_other_diagnosis d ON mr.id = d.mr_id
-LEFT JOIN sys_department_code sdc ON B16C_local = sdc.mr_coder_code
-WHERE
-	TIMESTAMPDIFF(MINUTE, b12, b15) <= 2880
-AND IFNULL(B11C, 0) != 1
-AND (
-	C14x01C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x01C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x02C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x03C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x04C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x05C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x06C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x07C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x08C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x09C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x10C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x11C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x12C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x13C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x14C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x15C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x16C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x17C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x18C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x19C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x20C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x21C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x22C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x23C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x24C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x25C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x26C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x27C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x28C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x29C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x30C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x31C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x32C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x33C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x34C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x35C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x36C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x37C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x38C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x39C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-	OR C35x40C IN (
-		SELECT
-			CODE
-		FROM
-			code_common
-		WHERE
-			TYPE = 'OPERATION_CODE'
-		AND (
-			bak1 = '手术'
-			OR bak1 = '介入治疗'
-		)
-	)
-)
-and mr.B15_standard
-between
+  mr.id AS a0027
+FROM mr
+  LEFT OUTER JOIN mr_other_operations1 o1
+    ON mr.id = o1.mr_id
+  LEFT OUTER JOIN mr_other_operations2 o2
+    ON mr.id = o2.mr_id
+  LEFT OUTER JOIN mr_other_diagnosis d
+    ON mr.id = d.mr_id
+  LEFT JOIN sys_department_code sdc
+    ON B16C_local = sdc.mr_coder_code
+WHERE (mr.A16 > 28
+        OR mr.A16 IS NULL
+        OR mr.A16 = '0')
+    AND ((C03C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+          AND C05C = '4'
+          AND (C03C IS NULL
+                OR C03C NOT REGEXP '^O|^P'))
+          OR (C06x01C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x01C = '4'
+              AND (C06x01C IS NULL
+                    OR C06x01C NOT REGEXP '^O|^P'))
+          OR (C06x02C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x02C = '4'
+              AND (C06x02C IS NULL
+                    OR C06x02C NOT REGEXP '^O|^P'))
+          OR (C06x03C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x03C = '4'
+              AND (C06x03C IS NULL
+                    OR C06x03C NOT REGEXP '^O|^P'))
+          OR (C06x04C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x04C = '4'
+              AND (C06x04C IS NULL
+                    OR C06x04C NOT REGEXP '^O|^P'))
+          OR (C06x05C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x05C = '4'
+              AND (C06x05C IS NULL
+                    OR C06x05C NOT REGEXP '^O|^P'))
+          OR (C06x06C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x06C = '4'
+              AND (C06x06C IS NULL
+                    OR C06x06C NOT REGEXP '^O|^P'))
+          OR (C06x07C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x07C = '4'
+              AND (C06x07C IS NULL
+                    OR C06x07C NOT REGEXP '^O|^P'))
+          OR (C06x08C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x08C = '4'
+              AND (C06x08C IS NULL
+                    OR C06x08C NOT REGEXP '^O|^P'))
+          OR (C06x09C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x09C = '4'
+              AND (C06x09C IS NULL
+                    OR C06x09C NOT REGEXP '^O|^P'))
+          OR (C06x10C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x10C = '4'
+              AND (C06x10C IS NULL
+                    OR C06x10C NOT REGEXP '^O|^P'))
+          OR (C06x11C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x11C = '4'
+              AND (C06x11C IS NULL
+                    OR C06x11C NOT REGEXP '^O|^P'))
+          OR (C06x12C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x12C = '4'
+              AND (C06x12C IS NULL
+                    OR C06x12C NOT REGEXP '^O|^P'))
+          OR (C06x13C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x13C = '4'
+              AND (C06x13C IS NULL
+                    OR C06x13C NOT REGEXP '^O|^P'))
+          OR (C06x14C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x14C = '4'
+              AND (C06x14C IS NULL
+                    OR C06x14C NOT REGEXP '^O|^P'))
+          OR (C06x15C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x15C = '4'
+              AND (C06x15C IS NULL
+                    OR C06x15C NOT REGEXP '^O|^P'))
+          OR (C06x16C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x16C = '4'
+              AND (C06x16C IS NULL
+                    OR C06x16C NOT REGEXP '^O|^P'))
+          OR (C06x17C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x17C = '4'
+              AND (C06x17C IS NULL
+                    OR C06x17C NOT REGEXP '^O|^P'))
+          OR (C06x18C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x18C = '4'
+              AND (C06x18C IS NULL
+                    OR C06x18C NOT REGEXP '^O|^P'))
+          OR (C06x19C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x19C = '4'
+              AND (C06x19C IS NULL
+                    OR C06x19C NOT REGEXP '^O|^P'))
+          OR (C06x20C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x20C = '4'
+              AND (C06x20C IS NULL
+                    OR C06x20C NOT REGEXP '^O|^P'))
+          OR (C06x21C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x21C = '4'
+              AND (C06x21C IS NULL
+                    OR C06x21C NOT REGEXP '^O|^P'))
+          OR (C06x22C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x22C = '4'
+              AND (C06x22C IS NULL
+                    OR C06x22C NOT REGEXP '^O|^P'))
+          OR (C06x23C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x23C = '4'
+              AND (C06x23C IS NULL
+                    OR C06x23C NOT REGEXP '^O|^P'))
+          OR (C06x24C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x24C = '4'
+              AND (C06x24C IS NULL
+                    OR C06x24C NOT REGEXP '^O|^P'))
+          OR (C06x25C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x25C = '4'
+              AND (C06x25C IS NULL
+                    OR C06x25C NOT REGEXP '^O|^P'))
+          OR (C06x26C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x26C = '4'
+              AND (C06x26C IS NULL
+                    OR C06x26C NOT REGEXP '^O|^P'))
+          OR (C06x27C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x27C = '4'
+              AND (C06x27C IS NULL
+                    OR C06x27C NOT REGEXP '^O|^P'))
+          OR (C06x28C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x28C = '4'
+              AND (C06x28C IS NULL
+                    OR C06x28C NOT REGEXP '^O|^P'))
+          OR (C06x29C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x29C = '4'
+              AND (C06x29C IS NULL
+                    OR C06x29C NOT REGEXP '^O|^P'))
+          OR (C06x30C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x30C = '4'
+              AND (C06x30C IS NULL
+                    OR C06x30C NOT REGEXP '^O|^P'))
+          OR (C06x31C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x31C = '4'
+              AND (C06x31C IS NULL
+                    OR C06x31C NOT REGEXP '^O|^P'))
+          OR (C06x32C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x32C = '4'
+              AND (C06x32C IS NULL
+                    OR C06x32C NOT REGEXP '^O|^P'))
+          OR (C06x33C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x33C = '4'
+              AND (C06x33C IS NULL
+                    OR C06x33C NOT REGEXP '^O|^P'))
+          OR (C06x34C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x34C = '4'
+              AND (C06x34C IS NULL
+                    OR C06x34C NOT REGEXP '^O|^P'))
+          OR (C06x35C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x35C = '4'
+              AND (C06x35C IS NULL
+                    OR C06x35C NOT REGEXP '^O|^P'))
+          OR (C06x36C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x36C = '4'
+              AND (C06x36C IS NULL
+                    OR C06x36C NOT REGEXP '^O|^P'))
+          OR (C06x37C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x37C = '4'
+              AND (C06x37C IS NULL
+                    OR C06x37C NOT REGEXP '^O|^P'))
+          OR (C06x38C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x38C = '4'
+              AND (C06x38C IS NULL
+                    OR C06x38C NOT REGEXP '^O|^P'))
+          OR (C06x39C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x39C = '4'
+              AND (C06x39C IS NULL
+                    OR C06x39C NOT REGEXP '^O|^P'))
+          OR (C06x40C REGEXP 'T81.0|T81.1|T81.3|T81.7|T81.8|T81.9|J98.402|I26.9|I82.807|A40|A41|R96|J96|E89|R57|I80|K91|N99|J95|M80|Z43'
+              AND C08x40C = '4'
+              AND (C06x40C IS NULL
+                    OR C06x40C NOT REGEXP '^O|^P')))
+    AND (C14x01C IN(SELECT
+                      CODE
+                    FROM code_common
+                    WHERE type = 'OPERATION_CODE'
+                        AND (bak1 = '手术'
+                              OR bak1 = '介入治疗'))
+          OR C35x01C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x02C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x03C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x04C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x05C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x06C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x07C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x08C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x09C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x10C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x11C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x12C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x13C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x14C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x15C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x16C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x17C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x18C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x19C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x20C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x21C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x22C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x23C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x24C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x25C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x26C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x27C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x28C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x29C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x30C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x31C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x32C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x33C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x34C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x35C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x36C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x37C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x38C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x39C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗'))
+          OR C35x40C IN(SELECT
+                          CODE
+                        FROM code_common
+                        WHERE type = 'OPERATION_CODE'
+                            AND (bak1 = '手术'
+                                  OR bak1 = '介入治疗')))
+    AND B11C != 1

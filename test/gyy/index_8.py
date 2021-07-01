@@ -44,30 +44,29 @@ def get_mr_ope_result():
     day_ope_count = 0
     for data_row in datas:
         json_obj = json.loads(str(data_row[1]))
-        if str(data_row[2]) == '0404b12f-41a5-47bf-91cf-f7a557fd59d4':
-            minutes_idff = get_minutes_diff(json_obj['b12'], json_obj['b15'])
-            if json_obj['b11c'] != 1 and minutes_idff <= 2880:
-                for dic_row in day_time_ope:
-                    operations = json_obj['operations']
-                    diagnosis = json_obj['diagnosis']
-                    flag_ope = False
-                    for ope in operations:
-                        # a = 'c35c' in ope
-                        # b = str(ope['c35c']) in codes_list
-                        # c = str(ope['c35c']).startswith(dic_row[0])
-                        if 'c35c' in ope and str(ope['c35c']) in codes_list and str(ope['c35c']).startswith(dic_row[0]):
-                            flag_ope = True
+        minutes_idff = get_minutes_diff(json_obj['b12'], json_obj['b15'])
+        if json_obj['b11c'] != 1 and minutes_idff <= 2880:
+            for dic_row in day_time_ope:
+                operations = json_obj['operations']
+                diagnosis = json_obj['diagnosis']
+                flag_ope = False
+                for ope in operations:
+                    # a = 'c35c' in ope
+                    # b = str(ope['c35c']) in codes_list
+                    # c = str(ope['c35c']).startswith(dic_row[0])
+                    if 'c35c' in ope and str(ope['c35c']) in codes_list and str(ope['c35c']).startswith(dic_row[0]):
+                        flag_ope = True
+                        break
+
+                if flag_ope:
+                    flag_diag = False
+                    for diag in diagnosis:
+                        if 'c06c' in diag and str(diag['c06c']).startswith(dic_row[1]):
+                            flag_diag = True
                             break
 
-                    if flag_ope:
-                        flag_diag = False
-                        for diag in diagnosis:
-                            if 'c06c' in diag and str(diag['c06c']).startswith(dic_row[1]):
-                                flag_diag = True
-                                break
-
-                        if flag_diag and flag_ope:
-                            day_ope_count+=1
+                    if flag_diag and flag_ope:
+                        day_ope_count+=1
     print(day_ope_count)
     print("end~")
 
