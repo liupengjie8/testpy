@@ -98,7 +98,7 @@ def add_work_rec(work_days):
                 msg.append('检测到日期：' + day + '未填报')
                 input = driver.find_elements_by_tag_name("input")[7]
                 input.click()
-                time.sleep(5)
+                time.sleep(3)
                 if i < 3:
                     # 获取alert对话框
                     dig_alert = driver.switch_to.alert
@@ -114,9 +114,11 @@ def add_work_rec(work_days):
                 driver.find_element_by_class_name("m-input").click()
                 product_lis = driver.find_elements_by_tag_name('li')
                 for li in product_lis:
+
                     if li.get_attribute("data-value") == product_id:
                         li.click()
                 driver.find_element_by_id('ID_OK').click()
+                time.sleep(2)
                 driver.switch_to.parent_frame()
                 i += 1
                 msg.append('日期：' + day + '填报成功')
@@ -138,9 +140,9 @@ def send_log(msg):
 
 msg.append('本周需填写工时日期：' + str(get_work_day()))
 do_login()
-time.sleep(3)
+time.sleep(2)
 to_work_rec()
-time.sleep(3)
+time.sleep(2)
 get_finished_days()
 add_work_rec(get_work_day())
 # 关闭浏览器

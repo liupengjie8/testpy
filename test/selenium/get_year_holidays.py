@@ -14,7 +14,6 @@ class WanNianRiLi(object):
 
     def parseHTML(self):
         """页面解析"""
-        url = 'https://wannianrili.bmcx.com/ajax/?q=2021-06&v=20031912'
         s = requests.session()
         headers = {
             'Host': 'wannianrili.bmcx.com',
@@ -33,8 +32,7 @@ class WanNianRiLi(object):
         dateList = [self.year + '-' + '%02d' % i for i in range(1, 13)]
         for year_month in dateList:
             s = requests.session()
-            url = 'https://wannianrili.bmcx.com/ajax/?q=2021-06&v=20031912'
-            payload = {'q': year_month, 'v': 20031912}
+            url = 'https://wannianrili.bmcx.com/ajax/?q='+year_month+'&v=20031912'
             response = s.get(url, headers=headers)
             element = etree.HTML(response.text)
             html = element.xpath('//div[@class="wnrl_riqi"]')

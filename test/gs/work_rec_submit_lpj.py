@@ -7,21 +7,22 @@ from datetime import timedelta
 import json
 from dingtalkchatbot.chatbot import DingtalkChatbot
 # WebHook地址
-webhook = 'https://oapi.dingtalk.com/robot/send?access_token=87032723645bb2fb701f33242b6afce88cb1fd79702ca2e6e3fce26f2ca0dd99 '
-secret = 'SECadabb2482dcade23f888ea30ee532eded7add910838d87b4436369d76bb94a82'
+webhook = 'https://oapi.dingtalk.com/robot/send?access_token' \
+          '=4fb919b05bde12a70d7dcf4f9ddaf9e9dfee5cf82a23802fd82a27f00f3a77fe '
+secret = 'SECf50a9ff48267e2669b9402ad8a637f9219053e49eee3783a7c7f42feb42af86c'
 # 初始化机器人小丁
 xiaoding = DingtalkChatbot(webhook, secret=secret)  # 方式二：勾选“加签”选项时使用（v1.5以上新功能）
 
 # 工时系统url
 url = 'http://39.98.72.170:8212/Accounts/SignIn'
 # 产品id
-product_id = '666210300019'
+product_id = '666210300018'
 # 用户名
-user_name = 'gaoya'
+user_name = 'liupengjie'
 # 密码
 password = '123456'
 # 手机号
-mobile = ['18334784387']
+mobile = ['18710199403']
 # 浏览器驱动
 driver = webdriver.Chrome()
 # 已经填报的工作日
@@ -114,6 +115,7 @@ def add_work_rec(work_days):
                 driver.find_element_by_class_name("m-input").click()
                 product_lis = driver.find_elements_by_tag_name('li')
                 for li in product_lis:
+
                     if li.get_attribute("data-value") == product_id:
                         li.click()
                 driver.find_element_by_id('ID_OK').click()
