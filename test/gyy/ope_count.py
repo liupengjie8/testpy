@@ -2,7 +2,7 @@ import pymysql
 import json
 
 codes_list = []
-conn = pymysql.connect(host='192.168.1.35', user='root', password='greAtsoft918!', db='area_report_platform_test_cn')
+conn = pymysql.connect(host='192.168.8.8', user='root', password='greAtsoft918!', db='area_report_platform_test_cn_yz')
 mycursor = conn.cursor()
 
 def get_ope_codes():
@@ -17,7 +17,7 @@ def get_ope_codes():
 
 def get_mr_ope_result():
     sql = 'SELECT date,mr_content FROM mrqc_result WHERE LEFT(DATE,7) IN (%s)  AND org_id = %s'
-    mycursor.execute(sql, ('2021-01', '130000200008'))
+    mycursor.execute(sql, ('2021-02', '130000200012'))
     datas = mycursor.fetchall()
     count_ope = 0
     for rows in datas:

@@ -1,13 +1,10 @@
 import pymysql
 import json
 
-org_id = '130000200008'
+org_id = '130000200012'
 codes_list = []
-conn = pymysql.connect(host='192.168.1.35', user='root', password='greAtsoft918!', db='area_report_platform_test_cn')
+conn = pymysql.connect(host='192.168.8.8', user='root', password='greAtsoft918!', db='area_report_platform_test_cn_yz')
 mycursor = conn.cursor()
-sql = "delete from mr_ope_rec"
-mycursor.execute(sql)
-conn.commit()
 
 
 def get_ope_codes():
@@ -22,8 +19,9 @@ def get_ope_codes():
 
 def get_mr_ope_result():
     sql = 'SELECT date,mr_content FROM mrqc_result_first WHERE LEFT(DATE,7) IN (%s)  AND org_id = %s'
-    ddd = mycursor.execute(sql, ('2021-01', org_id))
+    ddd = mycursor.execute(sql, ('2021-02', org_id))
     datas = mycursor.fetchall()
+    a48_count = 0
     for rows in datas:
         date = rows[0]
         json_obj = json.loads(str(rows[1]))
@@ -37,12 +35,12 @@ def get_mr_ope_result():
                     if str(ope['c35c']) in codes_list:
                         count_ope = count_ope + 1
                         opes.append(str(ope['c35c']))
-            if count_ope > 0:
-                sql_insert = 'INSERT INTO area_report_platform_test_cn.mr_ope_rec (org_id, a48, date, ope_count, opes) VALUES(%s, %s, %s, %s, %s)'
-                mycursor.execute(sql_insert, (org_id, str(a48), date, str(count_ope), str(opes)))
+        if count_ope > 0:
+            a48_count += 1
     conn.commit()
     mycursor.close()
     conn.close()
+    print(a48_count)
     print("end~")
 
 

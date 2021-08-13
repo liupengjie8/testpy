@@ -45,7 +45,10 @@ def get_mr_ope_result():
     for data_row in datas:
         json_obj = json.loads(str(data_row[1]))
         minutes_idff = get_minutes_diff(json_obj['b12'], json_obj['b15'])
-        if json_obj['b11c'] != 1 and minutes_idff <= 2880:
+        b11c = ''
+        if 'b11c' in json_obj:
+            b11c = str(json_obj['b11c'])
+        if  b11c != '1' and minutes_idff <= 2880:
             for dic_row in day_time_ope:
                 operations = json_obj['operations']
                 diagnosis = json_obj['diagnosis']
@@ -65,7 +68,7 @@ def get_mr_ope_result():
                             flag_diag = True
                             break
 
-                    if flag_diag and flag_ope:
+                    if flag_diag:
                         day_ope_count+=1
     print(day_ope_count)
     print("end~")

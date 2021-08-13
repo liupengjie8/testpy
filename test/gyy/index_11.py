@@ -20,13 +20,18 @@ def get_ope_codes():
 
 def get_mr_ope_result():
     sql = 'SELECT date,mr_content,id FROM mrqc_result WHERE LEFT(DATE,7) IN (%s)  AND org_id = %s'
-    mycursor.execute(sql, ('2021-05', org_id))
+    mycursor.execute(sql, ('2021-03', org_id))
     datas = mycursor.fetchall()
     complication_count = 0
     for data_row in datas:
         json_obj = json.loads(str(data_row[1]))
-        a16 = json_obj['a16']
-        if json_obj['b11c'] != 1 and (a16 == '0' or a16 > 28 or a16 == ''):
+        a16 = ''
+        if 'a16' in json_obj:
+            a16 = json_obj['a16']
+        b11c = ''
+        if 'b11c' in json_obj:
+            b11c = json_obj['b11c']
+        if  b11c != '1' and (a16 == '0' or a16 > '28' or a16 == ''):
             operations = json_obj['operations']
             diagnosis = json_obj['diagnosis']
             flag_ope = False
@@ -59,4 +64,5 @@ def get_mr_ope_result():
     print("end~")
 
 
+get_ope_codes()
 get_mr_ope_result()
